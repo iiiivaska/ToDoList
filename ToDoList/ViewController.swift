@@ -9,11 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var buildLabel: UILabel!
+    private let version = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        buildLabel.text = String(localized: "welcome_screen_title") + " " + version
     }
 
-
 }
-
