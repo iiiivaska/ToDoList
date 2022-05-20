@@ -18,6 +18,8 @@
 		A88BB4982836968300FE8B8B /* ToDoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88BB4972836968300FE8B8B /* ToDoListUITests.swift */; };
 		A88BB49A2836968300FE8B8B /* ToDoListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88BB4992836968300FE8B8B /* ToDoListUITestsLaunchTests.swift */; };
 		A88BB4AA2836AF7700FE8B8B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A88BB4AC2836AF7700FE8B8B /* Localizable.strings */; };
+		A88BB4B02836EDC000FE8B8B /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88BB4AF2836EDC000FE8B8B /* TodoItem.swift */; };
+		A88BB4B32836FDD400FE8B8B /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88BB4B22836FDD400FE8B8B /* FileCache.swift */; };
 		BCE3478C9FEB3F28CBB9C51B /* Pods_ToDoList_ToDoListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A3CA4BA7D12DCDBB59ACF2E /* Pods_ToDoList_ToDoListUITests.framework */; };
 		F01EFF71CEE6DB9E1D52751C /* Pods_ToDoListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8903FCBF68D0131770697 /* Pods_ToDoListTests.framework */; };
 /* End PBXBuildFile section */
@@ -61,6 +63,8 @@
 		A88BB4992836968300FE8B8B /* ToDoListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A88BB4AB2836AF7700FE8B8B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A88BB4AD2836AFD400FE8B8B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A88BB4AF2836EDC000FE8B8B /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		A88BB4B22836FDD400FE8B8B /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		BA212B4AA55A595910E62D0D /* Pods-ToDoListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoListTests.debug.xcconfig"; path = "Target Support Files/Pods-ToDoListTests/Pods-ToDoListTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BEB222E51A1FECD16CD35AE6 /* Pods-ToDoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoList.debug.xcconfig"; path = "Target Support Files/Pods-ToDoList/Pods-ToDoList.debug.xcconfig"; sourceTree = "<group>"; };
 		D8FFFA00B0DD18ADA964A7FE /* Pods_ToDoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +146,7 @@
 		A88BB4752836968000FE8B8B /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				A88BB4AE2836EDAE00FE8B8B /* Models */,
 				A88BB4762836968000FE8B8B /* AppDelegate.swift */,
 				A88BB4782836968000FE8B8B /* SceneDelegate.swift */,
 				A88BB47A2836968000FE8B8B /* ViewController.swift */,
@@ -169,6 +174,15 @@
 				A88BB4992836968300FE8B8B /* ToDoListUITestsLaunchTests.swift */,
 			);
 			path = ToDoListUITests;
+			sourceTree = "<group>";
+		};
+		A88BB4AE2836EDAE00FE8B8B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A88BB4AF2836EDC000FE8B8B /* TodoItem.swift */,
+				A88BB4B22836FDD400FE8B8B /* FileCache.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,7 +399,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\nTAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -396,6 +410,8 @@
 			files = (
 				A88BB47B2836968000FE8B8B /* ViewController.swift in Sources */,
 				A88BB4772836968000FE8B8B /* AppDelegate.swift in Sources */,
+				A88BB4B02836EDC000FE8B8B /* TodoItem.swift in Sources */,
+				A88BB4B32836FDD400FE8B8B /* FileCache.swift in Sources */,
 				A88BB4792836968000FE8B8B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
