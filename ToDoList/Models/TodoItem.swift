@@ -35,41 +35,38 @@ extension TodoItem {
             return nil
         }
         do {
-            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
-                guard let text = json["text"] else {
-                    return nil
-                }
-                var item: TodoItem?
-                switch (json["id"], json["importance"], text, json["deadline"]) {
-                case (let id?, let importance?, let text, let deadline?):
-                    item = TodoItem(id: id,
-                                    importance: Importance(rawValue: importance) ?? .ordinary,
-                                    text: text,
-                                    deadline: fmt.date(from: deadline))
-                case (let id?, _, let text, let deadline?):
-                    item = TodoItem(id: id,
-                                    importance: .ordinary,
-                                    text: text,
-                                    deadline: fmt.date(from: deadline))
-                case (let id?, let importance?, let text, _):
-                    item = TodoItem(id: id,
-                                    importance: Importance(rawValue: importance) ?? .ordinary,
-                                    text: text,
-                                    deadline: nil)
-                case (let id?, _, let text, _):
-                    item = TodoItem(id: id,
-                                    importance: .ordinary,
-                                    text: text,
-                                    deadline: nil)
-                default:
-                    item = nil
-                }
-                return item
+            guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: String] else {
+                return nil
             }
+            var item: TodoItem?
+            switch (json["id"], json["importance"], json["text"], json["deadline"]) {
+            case (let id?, let importance?, let text?, let deadline?):
+                item = TodoItem(id: id,
+                                importance: Importance(rawValue: importance) ?? .ordinary,
+                                text: text,
+                                deadline: fmt.date(from: deadline))
+            case (let id?, _, let text?, let deadline?):
+                item = TodoItem(id: id,
+                                importance: .ordinary,
+                                text: text,
+                                deadline: fmt.date(from: deadline))
+            case (let id?, let importance?, let text?, _):
+                item = TodoItem(id: id,
+                                importance: Importance(rawValue: importance) ?? .ordinary,
+                                text: text,
+                                deadline: nil)
+            case (let id?, _, let text?, _):
+                item = TodoItem(id: id,
+                                importance: .ordinary,
+                                text: text,
+                                deadline: nil)
+            default:
+                item = nil
+            }
+            return item
         } catch {
             return nil
         }
-        return nil
     }
 
     var json: Any {
