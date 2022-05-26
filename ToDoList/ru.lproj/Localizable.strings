@@ -7,3 +7,6 @@
 */
 
 "welcome_screen_title" = "Добро пожаловать";
+"cancel_button" = "Отменить";
+"save_button" = "Сохранить";
+"case_label" = "Дело";

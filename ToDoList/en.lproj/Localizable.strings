@@ -7,3 +7,6 @@
 */
 
 "welcome_screen_title" = "Welcome";
+"cancel_button" = "Cancel";
+"save_button" = "Save";
+"case_label" = "Case";
