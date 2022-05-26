@@ -50,6 +50,53 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3Ch-EF-9F8">
+                                <rect key="frame" x="20" y="222" width="374" height="192"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="importanceCell" id="jle-Qg-1pl">
+                                        <rect key="frame" x="0.0" y="44.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jle-Qg-1pl" id="Q8o-Bk-I9E">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Важность" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQP-Wy-glv">
+                                                    <rect key="frame" x="20" y="11.5" width="78" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="6zw-Dz-Ua2">
+                                                    <rect key="frame" x="232" y="6.5" width="122" height="32"/>
+                                                    <segments>
+                                                        <segment title="" image="arrow.down" catalog="system"/>
+                                                        <segment title="нет"/>
+                                                        <segment title="!!"/>
+                                                    </segments>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6zw-Dz-Ua2" firstAttribute="centerY" secondItem="Q8o-Bk-I9E" secondAttribute="centerY" id="71A-Gg-2X0"/>
+                                                <constraint firstAttribute="trailing" secondItem="6zw-Dz-Ua2" secondAttribute="trailing" constant="20" symbolic="YES" id="OX2-dV-3yC"/>
+                                                <constraint firstItem="KQP-Wy-glv" firstAttribute="leading" secondItem="Q8o-Bk-I9E" secondAttribute="leading" constant="20" symbolic="YES" id="VhB-na-3xg"/>
+                                                <constraint firstItem="KQP-Wy-glv" firstAttribute="centerY" secondItem="Q8o-Bk-I9E" secondAttribute="centerY" id="cTg-n6-jUI"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="6"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fGj-JS-dW3"/>
                         <color key="backgroundColor" red="0.96862745289999996" green="0.96470588450000005" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -64,7 +111,10 @@
                         <barButtonItem key="rightBarButtonItem" title="Сохранить" id="Aqw-5k-Deb"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="barLabel" destination="AP6-lZ-iiy" id="VTW-cV-WX3"/>
+                        <outlet property="cancelButton" destination="Ynn-VY-Itv" id="Bgh-vN-4TW"/>
                         <outlet property="descriptionTextView" destination="ccz-8t-zyy" id="osG-Vl-fMp"/>
+                        <outlet property="saveButton" destination="Aqw-5k-Deb" id="5M4-45-DYG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b5d-on-TVs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -109,6 +159,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.down" catalog="system" width="120" height="128"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

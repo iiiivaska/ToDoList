@@ -4,6 +4,7 @@
 
 ## View Methods
 ### Плэйсхолдер для TextView, исчезающий при начале редактирования
+
 ```swift
 class ViewController: UIViewController, UITextViewDelegate {
 
